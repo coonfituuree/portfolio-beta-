@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <!-- Link to your CSS file -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
+  <link rel="icon" type="image/png" href="myphoto.jpg">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo"><a href="#about">Gala</a></div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills-section">Skills</a></li>
+        <li><a href="#contact">Leave a Message</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero / Intro Section -->
+  <section class="hero">
+    <div class="hero-photo">
+      <img src="myphoto.jpg" alt="Profile Photo" class="profile-photo">
+    </div>
+    <div class="hero-text">
+      <h1>Hey World, I'm Galym!</h1>
+      <p>
+        I'm a software engineer from Kazakhstan, Astana. Currently studying at <b><a href="https://astanait.edu.kz/kk/%D0%B1%D0%B0%D1%81%D1%82%D1%8B-%D0%B1%D0%B5%D1%82/" target="_blank" rel="rel="noopener noreferrer">Astana IT University.</a></b>
+      </p>
+      <div id="socialmedia">
+        <div class="social">
+          <a href="https://www.instagram.com/baartay/" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://t.me/soulclouds1" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+          <a href="https://www.youtube.com/@baartay" target="_blank">
+            <i class="fa-brands fa-square-youtube"></i>
+        </a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+            <i class="devicon-linkedin-plain"></i>
+          </a>
+          <a href="https://github.com/coonfituuree" target="_blank" rel="noopener noreferrer">
+            <i class="devicon-github-original"></i>
+            </a>
+          <a href="https://music.apple.com/kz/playlist/favourite-songs/pl.u-8dUvp34vMA" target="_blank rel="noopener noreferrer" >
+            <i class="fa-solid fa-headphones-simple"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="about-me">
+    <h2>About</h2>
+    <p>
+      Provide more detailed information about your background, education, passions, 
+      and goals. You could also talk about your journey and what inspired you to get 
+      into this field.
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <h2>My Projects</h2>
+    <div class="project-list">
+      <div class="project-card">
+        <h3>Project 1</h3>
+        <p>Description about Project 1.</p>
+      </div>
+      <div class="project-card">
+        <h3>Project 2</h3>
+        <p>Description about Project 2.</p>
+      </div>
+      <div class="project-card">
+        <h3>Project 3</h3>
+        <p>Description about Project 3.</p>
+      </div>
+      <div class="project-card">
+        <h3>Project 4</h3>
+        <p>Description about Project 4.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills-section">
+    <h2>Skills</h2>
+    <div class="skills-container">
+        <i class="devicon-cplusplus-plain"></i>
+        <i class="fa-brands fa-java"></i>
+        <i class="fa-brands fa-python"></i>
+        <i class="fa-brands fa-html5"></i>
+        <i class="fa-brands fa-css3-alt"></i>
+        <i class="fa-brands fa-github-alt"></i>
+        <i class="fa-solid fa-database"></i>
+    </div>
+  </section>
+
+  <!-- Contact / Leave a Message Section -->
+  <section id="contact" class="contact">
+    <h2>Leave a Message</h2>
+    <form id="messageForm" action="/submit-message" method="POST">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+  
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+  
+      <button type="submit">Send</button>
+  </form>
+  </section>
+  <script>
+    document.getElementById('messageForm').addEventListener('submit', async function (event) {
+      event.preventDefault(); // Отключаем стандартную отправку формы
+  
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+  
+      try {
+          const response = await fetch('http://localhost:3000/submit-message', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ email, message }),
+          });
+  
+          if (response.ok) {
+              alert('Message sent successfully!');
+              document.getElementById('messageForm').reset();
+          } else {
+              const errorData = await response.json();
+              alert(`Error: ${errorData.message}`);
+          }
+      } catch (err) {
+          console.error('Error:', err);
+          alert('Failed to send message. Please try again later.');
+      }
+  });
+  
+</script>
+</body>
+</html>
