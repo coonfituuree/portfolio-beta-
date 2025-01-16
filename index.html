@@ -40,7 +40,7 @@
           <a href="https://www.instagram.com/baartay/" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-instagram"></i>
           </a>
-          <a href="https://t.me/soulclouds1" target="_blank" rel="noopener noreferrer">
+          <a href="https://t.me/bartayyy" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-telegram"></i>
           </a>
           <a href="https://www.youtube.com/@baartay" target="_blank">
@@ -64,9 +64,7 @@
   <section id="about" class="about-me">
     <h2>About</h2>
     <p>
-      Provide more detailed information about your background, education, passions, 
-      and goals. You could also talk about your journey and what inspired you to get 
-      into this field.
+      Coming soon...
     </p>
   </section>
 
@@ -76,19 +74,19 @@
     <div class="project-list">
       <div class="project-card">
         <h3>Project 1</h3>
-        <p>Description about Project 1.</p>
+        <p>Coming soon...</p>
       </div>
       <div class="project-card">
         <h3>Project 2</h3>
-        <p>Description about Project 2.</p>
+        <p>Coming soon...</p>
       </div>
       <div class="project-card">
         <h3>Project 3</h3>
-        <p>Description about Project 3.</p>
+        <p>Coming soon...</p>
       </div>
       <div class="project-card">
         <h3>Project 4</h3>
-        <p>Description about Project 4.</p>
+        <p>Coming soon...</p>
       </div>
     </div>
   </section>
@@ -108,47 +106,6 @@
   </section>
 
   <!-- Contact / Leave a Message Section -->
-  <section id="contact" class="contact">
-    <h2>Leave a Message</h2>
-    <form id="messageForm" action="/submit-message" method="POST">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
   
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
-  
-      <button type="submit">Send</button>
-  </form>
-  </section>
-  <script>
-    document.getElementById('messageForm').addEventListener('submit', async function (event) {
-      event.preventDefault(); // Отключаем стандартную отправку формы
-  
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-  
-      try {
-          const response = await fetch('http://localhost:3000/submit-message', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ email, message }),
-          });
-  
-          if (response.ok) {
-              alert('Message sent successfully!');
-              document.getElementById('messageForm').reset();
-          } else {
-              const errorData = await response.json();
-              alert(`Error: ${errorData.message}`);
-          }
-      } catch (err) {
-          console.error('Error:', err);
-          alert('Failed to send message. Please try again later.');
-      }
-  });
-  
-</script>
 </body>
 </html>
